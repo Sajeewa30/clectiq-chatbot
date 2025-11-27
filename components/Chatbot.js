@@ -390,15 +390,18 @@ export default function Chatbot({ config: userConfig }) {
         .chat-messages {
           flex: 1;
           overflow-y: auto;
-          padding: 20px;
+          padding: 20px 16px;
           display: flex;
           flex-direction: column;
           gap: 12px;
+          width: 100%;
+          max-width: 820px;
+          margin: 0 auto;
         }
         .chat-message {
           padding: 12px 14px;
           border-radius: 12px;
-          max-width: 80%;
+          max-width: 68%;
           word-wrap: break-word;
           font-size: 15px;
           line-height: 1.5;
