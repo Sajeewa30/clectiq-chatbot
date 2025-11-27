@@ -387,6 +387,15 @@ export default function Chatbot({ config: userConfig }) {
           height: 100%;
           background: #ffffff;
         }
+        .chat-body.has-messages {
+          padding-top: 24px;
+        }
+        .chat-body.empty {
+          justify-content: center;
+        }
+        .chat-body.empty .chat-messages {
+          display: none;
+        }
         .chat-messages {
           flex: 1;
           overflow-y: auto;
@@ -441,12 +450,24 @@ export default function Chatbot({ config: userConfig }) {
           border-top: 1px solid #e5e7eb;
           background: #ffffff;
         }
+        .input-area.center {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 20px;
+          border-top: none;
+        }
         .input-row {
           display: flex;
           gap: 12px;
           align-items: flex-end;
           max-width: 760px;
           margin: 0 auto;
+        }
+        .chat-body.empty .input-row {
+          max-width: 640px;
+          width: 100%;
         }
         .input-row textarea {
           flex: 1;
