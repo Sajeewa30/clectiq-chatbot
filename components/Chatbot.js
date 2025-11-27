@@ -434,10 +434,10 @@ export default function Chatbot({ config: userConfig }) {
         }
         .chat-message.user {
           align-self: flex-end;
-          background: #dbeafe;
-          color: #0f172a;
-          border-color: #bfdbfe;
-          box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+          background: #121212;
+          color: #ffffff;
+          border-color: #121212;
+          box-shadow: 0 8px 20px rgba(18, 18, 18, 0.25);
         }
         .chat-message.bot {
           align-self: flex-start;
@@ -497,9 +497,9 @@ export default function Chatbot({ config: userConfig }) {
         }
         .input-row textarea::placeholder { color: #9ca3af; }
         .input-row button {
-          background: linear-gradient(135deg, ${defaultConfig.style.primaryColor} 0%, ${defaultConfig.style.secondaryColor} 100%);
+          background: #121212;
           color: #fff;
-          border: 1px solid #dfe3ea;
+          border: 1px solid #121212;
           border-radius: 12px;
           padding: 0 18px;
           height: 52px;
