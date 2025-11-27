@@ -314,14 +314,28 @@ export default function Chatbot({ config: userConfig }) {
             return (
               <div
                 key={m.id || i}
-                className={`chat-message ${m.role}`}
-                ref={isLastBot ? lastBotRef : null}
-                style={{ whiteSpace: "pre-wrap" }}
-              >
-                {isTypingMsg ? sanitizeTypingDisplay(m.text) : renderMessageWithLinks(m.text, { isTyping: false })}
-              </div>
-            );
-          })}
+              className={`chat-message ${m.role}`}
+              ref={isLastBot ? lastBotRef : null}
+              style={{ whiteSpace: "pre-wrap" }}
+            >
+              {isTypingMsg ? sanitizeTypingDisplay(m.text) : renderMessageWithLinks(m.text, { isTyping: false })}
+              {m.role === "bot" && m.links?.length ? (
+                <div className="chat-links">
+                  {m.links.map((link, idx) => (
+                    <a
+                      key={link.url || idx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {link.label || "Open link"}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
 
           {hasFocus && !sending && input && (
             <div className="chat-message user typing-indicator">
@@ -510,6 +524,35 @@ export default function Chatbot({ config: userConfig }) {
         }
         .chat-footer a { color: #6b7280; text-decoration: none; }
         .chat-footer a:hover { color: #0f172a; }
+
+        .chat-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 10px;
+        }
+        .chat-links a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 10px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 600;
+          background: linear-gradient(135deg, ${defaultConfig.style.primaryColor} 0%, ${defaultConfig.style.secondaryColor} 100%);
+          color: #ffffff;
+          border: 1px solid #dfe3ea;
+          box-shadow: 0 6px 14px rgba(37, 99, 235, 0.12);
+          transition: transform 0.15s ease, filter 0.15s ease;
+        }
+        .chat-links a:hover {
+          transform: translateY(-1px);
+          filter: brightness(1.03);
+        }
+        .chat-links a:active {
+          transform: translateY(0);
+          filter: brightness(0.98);
+        }
 
         @media (max-width: 768px) {
           .chat-shell { height: 100vh; }
